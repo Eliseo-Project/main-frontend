@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #e7e5e7;
+  --color-cream-50: #f3f2f3;
+  --color-blush: #d5c6cb;
+  --color-blush-light: #e6dadd;
+  --color-rose: #be9fa4;
+  --color-rose-dark: #a5828a;
+  --color-forest: #3c4d4a;
+  --color-forest-light: #4f6460;
+  --color-mauve: #907275;
+  --color-mauve-light: #a68b8d;
+  --color-brown: #3b2a22;
+  --color-brown-soft: #5a4034;
+  --color-brown-faint: #7a6156;
+  --color-gold: #b08d57;
+
+  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-sans: "Jost", "Helvetica Neue", sans-serif;
+  --font-script: "Cormorant Garamond", serif;
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-brown);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    color: var(--color-brown);
+  }
+}
+
+::selection {
+  background: var(--color-rose);
+  color: var(--color-cream-50);
+}
+
+/* thin elegant scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-rose);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-mauve);
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px var(--color-brown);
+  color: transparent;
+}
+
+.tracking-luxe {
+  letter-spacing: 0.28em;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.bg-grain {
+  position: relative;
+}
+.bg-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.shimmer-gold {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold) 50%,
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
