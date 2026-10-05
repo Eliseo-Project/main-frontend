@@ -42,6 +42,15 @@ const Offers = () => {
             <Flourish />
           </Reveal>
 
+          {offers.length === 0 && (
+            <Reveal className="text-center max-w-xl mx-auto">
+              <p className="text-brown-soft font-light leading-relaxed">
+                There are no offers available right now. Please check back soon for our
+                latest seasonal promotions.
+              </p>
+            </Reveal>
+          )}
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {offers.map((offer, i) => (
               <Reveal key={offer.id || offer.title} delay={i * 0.08}>

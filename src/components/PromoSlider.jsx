@@ -29,6 +29,8 @@ const PromoSlider = () => {
     setIsDragging(false)
   }
 
+  if (!offers?.length) return null
+
   return (
     <section className="relative bg-white overflow-hidden py-16 md:py-20 border-y border-gold/30">
       <div className="max-w-7xl mx-auto px-6 md:px-10 mb-10 text-center">

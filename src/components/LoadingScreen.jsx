@@ -258,7 +258,7 @@ const LoadingScreen = ({ onFinish }) => {
         >
           <div className="flex flex-col items-center gap-2">
             <span className="text-center font-serif text-3xl uppercase tracking-luxe text-cream-50 sm:text-4xl md:text-5xl">
-              Éliseo Aesthetics
+              Eliseo Aesthetics
             </span>
             <span className="font-script text-xl not-italic text-gold md:text-2xl">
               Beauty Lounge

@@ -51,7 +51,7 @@ const defaultHome = {
 }
 
 const defaultContact = {
-  address: '24 Rosewood Avenue, Colombo 07, Sri Lanka',
+  address: '995/6, Park Lane, Rajagiriya, Sri Lanka',
   phone: '+94 77 123 4567',
   phone2: '+94 11 234 5678',
   email: 'hello@eliseobeautylounge.com',
@@ -59,7 +59,7 @@ const defaultContact = {
   hoursLine2: 'Sunday: Closed',
   instagram: 'https://instagram.com',
   facebook: 'https://facebook.com',
-  mapQuery: 'Colombo 07, Sri Lanka',
+  mapQuery: 'Eliseo Beauty Lounge, 995/6 Park Lane, Rajagiriya, Sri Lanka',
   heroImage: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1800&q=80',
 }
 

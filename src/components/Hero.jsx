@@ -7,7 +7,7 @@ import { resolveImage } from '../lib/api'
 const Hero = ({
   titleLine1 = 'Eliseo',
   titleLine2 = 'Beauty Lounge',
-  subtitle = 'A warm and welcoming space where quiet luxury meets genuine care — pairing expert beauty with personal attention to make every visit feel meaningful.',
+  subtitle = 'A warm and welcoming space where quiet luxury meets genuine care  pairing expert beauty with personal attention to make every visit feel meaningful.',
   backgroundImage = '',
 }) => {
   return (
