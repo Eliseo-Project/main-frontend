@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { FiPhoneCall, FiX } from 'react-icons/fi'
 import Flourish from './Flourish'
 
-const HOTLINE = '011 200 0000'
+const HOTLINE = '076 736 0450'
 
 const AppointmentPopup = () => {
   const [open, setOpen] = useState(false)
