@@ -256,11 +256,11 @@ const LoadingScreen = ({ onFinish }) => {
           animate={exiting ? { opacity: 0, y: -14 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1">
             <span className="text-center font-serif text-3xl uppercase tracking-luxe text-cream-50 sm:text-4xl md:text-5xl">
               Eliseo
             </span>
-            <span className="font-script text-xl not-italic text-gold md:text-2xl">
+            <span className="whitespace-nowrap font-script text-2xl not-italic text-gold sm:text-3xl md:text-4xl">
               Beauty Lounge
             </span>
           </div>
