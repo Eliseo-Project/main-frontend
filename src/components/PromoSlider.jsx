@@ -1,17 +1,19 @@
-import { useRef, useState } from 'react'
+﻿import { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Eyebrow from './Eyebrow'
 import { useSiteData } from '../context/SiteDataContext'
 import { resolveImage } from '../lib/api'
 
 const PromoSlider = () => {
   const { offers } = useSiteData()
+  const navigate = useNavigate()
   const trackRef = useRef(null)
-  const drag = useRef({ active: false, startX: 0, scrollLeft: 0 })
+  const drag = useRef({ active: false, moved: false, startX: 0, scrollLeft: 0 })
   const [isDragging, setIsDragging] = useState(false)
 
   const onPointerDown = (e) => {
     const el = trackRef.current
-    drag.current = { active: true, startX: e.pageX - el.offsetLeft, scrollLeft: el.scrollLeft }
+    drag.current = { active: true, moved: false, startX: e.pageX - el.offsetLeft, scrollLeft: el.scrollLeft }
     setIsDragging(true)
   }
 
@@ -20,6 +22,7 @@ const PromoSlider = () => {
     const el = trackRef.current
     const x = e.pageX - el.offsetLeft
     const walk = x - drag.current.startX
+    if (Math.abs(walk) > 5) drag.current.moved = true
     el.scrollLeft = drag.current.scrollLeft - walk
   }
 
@@ -56,7 +59,14 @@ const PromoSlider = () => {
           style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
         >
           {offers.map((offer, i) => (
-            <div key={offer.id || i} className="group w-64 md:w-72 shrink-0 snap-start">
+            <div
+              key={offer.id || i}
+              role="link"
+              tabIndex={0}
+              onClick={() => !drag.current.moved && navigate('/services')}
+              onKeyDown={(e) => e.key === 'Enter' && navigate('/services')}
+              className="group w-64 md:w-72 shrink-0 snap-start"
+            >
               <div className="relative overflow-hidden bg-blush-light">
                 <img
                   src={resolveImage(offer.image)}
