@@ -106,7 +106,7 @@ const MobileService = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {home.mobileServiceImages.map((src, i) => (
               <Reveal key={src || i} delay={i * 0.08}>
-                <div className="group relative h-56 md:h-72">
+                <div className="group relative aspect-4/5">
                   <ParallaxBg
                     src={resolveImage(src)}
                     fallbackColor="#D5C6CB"

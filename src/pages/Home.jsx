@@ -242,14 +242,10 @@ const Home = () => {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-12 max-w-sm sm:max-w-none mx-auto">
             {home.mobileServiceImages.slice(0, 3).map((src, i) => (
-              <Reveal
-                key={src || i}
-                delay={i * 0.08}
-                className={i === 0 ? 'col-span-2 md:col-span-1' : ''}
-              >
-                <div className="group relative h-56 md:h-72">
+              <Reveal key={src || i} delay={i * 0.08}>
+                <div className="group relative aspect-4/5">
                   <ParallaxBg
                     src={resolveImage(src)}
                     fallbackColor="#D5C6CB"
