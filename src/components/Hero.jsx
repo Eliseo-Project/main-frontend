@@ -44,9 +44,9 @@ const Hero = ({
           transition={{ duration: 0.8, delay: 0.25 }}
           className="font-serif text-cream-50 text-5xl sm:text-6xl md:text-7xl leading-[1.05]"
         >
-          <span className="uppercase tracking-wide">{titleLine1}</span>
+          <span className="font-lucida uppercase tracking-wide">{titleLine1}</span>
           <br />
-          <span className="italic text-gold text-3xl sm:text-4xl md:text-5xl">{titleLine2}</span>
+          <span className="font-segoe font-[350] text-gold text-3xl sm:text-4xl md:text-5xl">{titleLine2}</span>
         </motion.h1>
 
         <motion.p

@@ -19,6 +19,8 @@
   --font-serif: "Playfair Display", "Georgia", serif;
   --font-sans: "Jost", "Helvetica Neue", sans-serif;
   --font-script: "Cormorant Garamond", serif;
+  --font-lucida: "Lucida Bright", "Lucida Serif", "Georgia", serif;
+  --font-segoe: "Segoe UI Semilight", "Segoe UI", "Helvetica Neue", sans-serif;
 
   --animate-marquee: marquee 32s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
