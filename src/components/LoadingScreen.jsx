@@ -2,32 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { gsap } from '../lib/gsap'
 
-// Vector redraw of the Eliseo mark: two overlapping teal circles, a leaf in
-// the overlap, a horizontal stroke through the left circle and an "A" on the right.
-const EliseoLogo = ({ className }) => (
-  <svg viewBox="100 35 600 385" className={className} role="img" aria-label="Eliseo logo">
-    <defs>
-      <clipPath id="eliseo-leaf">
-        <path d="M400 75 Q225 230 400 385 Q575 230 400 75Z" />
-      </clipPath>
-    </defs>
-    <circle cx="290" cy="230" r="182" fill="#2f4f52" />
-    <circle cx="510" cy="230" r="182" fill="#2f4f52" />
-    <g fill="none" stroke="#f3e6d6" strokeWidth="4" strokeLinecap="round">
-      <path d="M400 75 Q225 230 400 385 Q575 230 400 75Z" />
-      <g clipPath="url(#eliseo-leaf)">
-        <line x1="400" y1="75" x2="400" y2="385" />
-        {[145, 205, 265, 325].map((y) => (
-          <path key={y} d={`M310 ${y - 90} L400 ${y} L490 ${y - 90}`} />
-        ))}
-      </g>
-      <line x1="108" y1="232" x2="288" y2="232" />
-      <line x1="505" y1="45" x2="452" y2="330" />
-      <line x1="505" y1="45" x2="640" y2="350" />
-      <line x1="510" y1="232" x2="590" y2="232" />
-    </g>
-  </svg>
-)
+const LOGO_URL = '/images/eliseo-logo.png'
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
@@ -256,7 +231,7 @@ const LoadingScreen = ({ onFinish }) => {
                     : { duration: 1.1, ease: 'easeOut' }
                 }
               >
-                <EliseoLogo className="w-[78%]" />
+                <img src={LOGO_URL} alt="Eliseo logo" className="w-[78%] h-auto" />
               </motion.div>
             </div>
           </div>
