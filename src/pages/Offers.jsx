@@ -55,17 +55,12 @@ const Offers = () => {
             {offers.map((offer, i) => (
               <Reveal key={offer.id || offer.title} delay={i * 0.08}>
                 <div className="group relative h-full flex flex-col overflow-hidden border border-blush hover:border-gold/70 transition-colors duration-500">
-                  <div className="relative h-56 overflow-hidden">
-                    <div
-                      className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
-                      style={{
-                        backgroundImage: `url(${resolveImage(offer.image)})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        backgroundColor: '#D5C6CB',
-                      }}
+                  <div className="relative overflow-hidden bg-blush-light">
+                    <img
+                      src={resolveImage(offer.image)}
+                      alt={offer.title}
+                      className="block w-full h-auto transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brown/70 via-transparent to-transparent" />
                     <span className="absolute top-4 left-4 bg-brown text-gold text-xs tracking-luxe uppercase px-3 py-1.5">
                       {offer.tag}
                     </span>

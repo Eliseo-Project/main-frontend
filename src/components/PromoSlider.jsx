@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
 import Eyebrow from './Eyebrow'
-import ParallaxBg from './ParallaxBg'
 import { useSiteData } from '../context/SiteDataContext'
 import { resolveImage } from '../lib/api'
 
@@ -51,34 +50,32 @@ const PromoSlider = () => {
           onPointerMove={onPointerMove}
           onPointerUp={endDrag}
           onPointerLeave={endDrag}
-          className={`flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory px-6 md:px-10 select-none ${
+          className={`flex items-start gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory px-6 md:px-10 select-none ${
             isDragging ? 'cursor-grabbing' : 'cursor-grab'
           }`}
           style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
         >
           {offers.map((offer, i) => (
-            <div
-              key={offer.id || i}
-              className="relative w-64 md:w-72 h-80 md:h-96 shrink-0 snap-start"
-            >
-              <ParallaxBg
-                src={resolveImage(offer.image)}
-                hoverZoom
-                containerClassName="absolute inset-0 pointer-events-none"
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/95 via-brown/25 to-transparent" />
-              </ParallaxBg>
-              <div className="absolute inset-2 border border-gold/30 pointer-events-none" />
+            <div key={offer.id || i} className="group w-64 md:w-72 shrink-0 snap-start">
+              <div className="relative overflow-hidden bg-blush-light">
+                <img
+                  src={resolveImage(offer.image)}
+                  alt={offer.title}
+                  draggable={false}
+                  className="block w-full h-auto pointer-events-none transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-2 border border-gold/30 pointer-events-none" />
 
-              <span className="absolute top-4 right-4 bg-gold text-brown text-[10px] font-medium tracking-luxe uppercase px-3 py-1 pointer-events-none">
-                {offer.tag}
-              </span>
+                <span className="absolute top-4 right-4 bg-gold text-brown text-[10px] font-medium tracking-luxe uppercase px-3 py-1 pointer-events-none">
+                  {offer.tag}
+                </span>
+              </div>
 
-              <div className="absolute bottom-0 p-5 pointer-events-none">
-                <h3 className="font-serif text-lg md:text-xl text-cream-50 mb-1 leading-snug">
+              <div className="pt-4 pointer-events-none">
+                <h3 className="font-serif text-lg md:text-xl text-brown mb-1 leading-snug">
                   {offer.title}
                 </h3>
-                <p className="text-cream-50/70 text-xs font-light">{offer.validUntil}</p>
+                <p className="text-brown-faint text-xs font-light">{offer.validUntil}</p>
               </div>
             </div>
           ))}
