@@ -46,7 +46,7 @@ const Hero = ({
         >
           <span className="font-lucida uppercase tracking-wide">{titleLine1}</span>
           <br />
-          <span className="font-segoe font-[350] text-gold text-3xl sm:text-4xl md:text-5xl">{titleLine2}</span>
+          <span className="font-segoe font-[350] text-3xl sm:text-4xl md:text-5xl">{titleLine2}</span>
         </motion.h1>
 
         <motion.p
