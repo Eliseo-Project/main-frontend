@@ -31,9 +31,8 @@ const SPARKLES = [
 
 // Full-viewport splash shown once on app boot, before anything else mounts.
 // Depth comes from several layers riding shared --mx/--my CSS vars (glow,
-// two counter-rotating rings, a mouse-tilted logo); the brand name and
-// progress line sit below on a deep forest/brown backdrop so the pale
-// logo medallion reads like a lit centerpiece rather than a flat icon.
+// two counter-rotating rings, a mouse-tilted logo); the progress line sits below on a deep brown
+// backdrop so the gold-rimmed logo medallion reads like a lit centerpiece.
 const LoadingScreen = ({ onFinish }) => {
   const stageRef = useRef(null)
   const [progress, setProgress] = useState(0)
@@ -131,7 +130,7 @@ const LoadingScreen = ({ onFinish }) => {
         style={{ perspective: '1200px' }}
       >
         <motion.div
-          className="relative flex h-52 w-52 items-center justify-center md:h-64 md:w-64"
+          className="relative flex h-64 w-64 items-center justify-center md:h-80 md:w-80"
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut' }}
@@ -167,7 +166,7 @@ const LoadingScreen = ({ onFinish }) => {
 
           {/* mid layer — two counter-rotating gold rings */}
           <div
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[250px] w-[250px]"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[270px] w-[270px] md:h-[340px] md:w-[340px]"
             style={{
               transform:
                 'translate(-50%, -50%) translate(calc(var(--mx, 0) * 16px), calc(var(--my, 0) * 16px))',
@@ -188,7 +187,7 @@ const LoadingScreen = ({ onFinish }) => {
             />
           </div>
           <div
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[310px] w-[310px]"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] md:h-[400px] md:w-[400px]"
             style={{
               transform:
                 'translate(-50%, -50%) translate(calc(var(--mx, 0) * 10px), calc(var(--my, 0) * 10px))',
@@ -218,7 +217,7 @@ const LoadingScreen = ({ onFinish }) => {
               }}
             >
               <motion.div
-                className="relative flex h-40 w-40 items-center justify-center overflow-hidden rounded-full border-[3px] border-gold bg-[#f3e6d6] shadow-[0_0_60px_rgba(176,141,87,0.35)] md:h-52 md:w-52"
+                className="relative h-56 w-56 overflow-hidden rounded-full border-[3px] border-gold bg-[#19464b] shadow-[0_0_60px_rgba(176,141,87,0.35)] md:h-72 md:w-72"
                 initial={{ opacity: 0, scale: 0.85 }}
                 animate={
                   exiting
@@ -231,7 +230,7 @@ const LoadingScreen = ({ onFinish }) => {
                     : { duration: 1.1, ease: 'easeOut' }
                 }
               >
-                <img src={LOGO_URL} alt="Eliseo logo" className="w-[78%] h-auto" />
+                <img src={LOGO_URL} alt="Eliseo Beauty Lounge" className="h-full w-full object-cover" />
               </motion.div>
             </div>
           </div>
@@ -243,16 +242,7 @@ const LoadingScreen = ({ onFinish }) => {
           animate={exiting ? { opacity: 0, y: -14 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <div className="flex flex-col items-center gap-2">
-            <h1 className="whitespace-nowrap font-serif text-base uppercase tracking-[0.18em] text-cream-50 sm:text-2xl md:text-3xl">
-              Eliseo Beauty Lounge
-            </h1>
-            <span className="font-script text-sm italic tracking-wide text-gold sm:text-base md:text-lg">
-              Be Radiant. Be You.
-            </span>
-          </div>
-
-          <div className="relative mt-4 h-[3px] w-56 overflow-hidden rounded-full bg-cream-50/15 md:w-72">
+          <div className="relative h-[3px] w-56 overflow-hidden rounded-full bg-cream-50/15 md:w-72">
             <div
               className="absolute inset-y-0 left-0 rounded-full bg-gold"
               style={{ width: `${pct}%` }}
