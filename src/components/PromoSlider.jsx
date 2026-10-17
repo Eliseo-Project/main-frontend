@@ -63,8 +63,8 @@ const PromoSlider = () => {
               key={offer.id || i}
               role="link"
               tabIndex={0}
-              onClick={() => !drag.current.moved && navigate('/services')}
-              onKeyDown={(e) => e.key === 'Enter' && navigate('/services')}
+              onClick={() => !drag.current.moved && navigate('/offers')}
+              onKeyDown={(e) => e.key === 'Enter' && navigate('/offers')}
               className="group w-64 md:w-72 shrink-0 snap-start"
             >
               <div className="relative overflow-hidden bg-blush-light">
