@@ -21,7 +21,7 @@ const defaultAbout = {
     { icon: 'shield', title: 'Integrity', text: 'Honest advice, premium products, and hygiene standards you can always trust.' },
   ],
   missionQuote:
-    'Our mission is to give every guest an unhurried hour of beauty, calm and confidence — in a space as considered as the care we give.',
+    'Our mission is to give every guest an unhurried hour of beauty, calm and confidence in a space as considered as the care we give.',
 }
 
 const defaultHome = {
