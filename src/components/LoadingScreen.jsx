@@ -2,8 +2,32 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { gsap } from '../lib/gsap'
 
-const LOGO_URL =
-  'https://res.cloudinary.com/dtscqhcop/image/upload/v1789180808/WhatsApp_Image_2026-09-12_at_08.08.16_wejwal.jpg'
+// Vector redraw of the Eliseo mark: two overlapping teal circles, a leaf in
+// the overlap, a horizontal stroke through the left circle and an "A" on the right.
+const EliseoLogo = ({ className }) => (
+  <svg viewBox="100 35 600 385" className={className} role="img" aria-label="Eliseo logo">
+    <defs>
+      <clipPath id="eliseo-leaf">
+        <path d="M400 75 Q225 230 400 385 Q575 230 400 75Z" />
+      </clipPath>
+    </defs>
+    <circle cx="290" cy="230" r="182" fill="#2f4f52" />
+    <circle cx="510" cy="230" r="182" fill="#2f4f52" />
+    <g fill="none" stroke="#f3e6d6" strokeWidth="4" strokeLinecap="round">
+      <path d="M400 75 Q225 230 400 385 Q575 230 400 75Z" />
+      <g clipPath="url(#eliseo-leaf)">
+        <line x1="400" y1="75" x2="400" y2="385" />
+        {[145, 205, 265, 325].map((y) => (
+          <path key={y} d={`M310 ${y - 90} L400 ${y} L490 ${y - 90}`} />
+        ))}
+      </g>
+      <line x1="108" y1="232" x2="288" y2="232" />
+      <line x1="505" y1="45" x2="452" y2="330" />
+      <line x1="505" y1="45" x2="640" y2="350" />
+      <line x1="510" y1="232" x2="590" y2="232" />
+    </g>
+  </svg>
+)
 
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
@@ -38,16 +62,8 @@ const SPARKLES = [
 const LoadingScreen = ({ onFinish }) => {
   const stageRef = useRef(null)
   const [progress, setProgress] = useState(0)
-  const [ready, setReady] = useState(false)
   const [exiting, setExiting] = useState(false)
   const reduceMotion = useRef(prefersReducedMotion()).current
-
-  useEffect(() => {
-    const img = new Image()
-    img.src = LOGO_URL
-    img.onload = () => setReady(true)
-    img.onerror = () => setReady(true)
-  }, [])
 
   useEffect(() => {
     let raf
@@ -57,7 +73,7 @@ const LoadingScreen = ({ onFinish }) => {
     const tick = (now) => {
       const pct = Math.min(1, (now - startTime) / minDuration)
       setProgress(pct)
-      if (pct < 1 || !ready) {
+      if (pct < 1) {
         raf = requestAnimationFrame(tick)
       } else {
         setExiting(true)
@@ -65,7 +81,7 @@ const LoadingScreen = ({ onFinish }) => {
     }
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
-  }, [ready])
+  }, [])
 
   useEffect(() => {
     const el = stageRef.current
@@ -227,7 +243,7 @@ const LoadingScreen = ({ onFinish }) => {
               }}
             >
               <motion.div
-                className="relative h-40 w-40 overflow-hidden rounded-full border-[3px] border-gold shadow-[0_0_60px_rgba(176,141,87,0.35)] md:h-52 md:w-52"
+                className="relative flex h-40 w-40 items-center justify-center overflow-hidden rounded-full border-[3px] border-gold bg-[#f3e6d6] shadow-[0_0_60px_rgba(176,141,87,0.35)] md:h-52 md:w-52"
                 initial={{ opacity: 0, scale: 0.85 }}
                 animate={
                   exiting
@@ -240,11 +256,7 @@ const LoadingScreen = ({ onFinish }) => {
                     : { duration: 1.1, ease: 'easeOut' }
                 }
               >
-                <img
-                  src={LOGO_URL}
-                  alt="Éliseo Obea Salon"
-                  className="h-full w-full scale-[1.15] object-cover"
-                />
+                <EliseoLogo className="w-[78%]" />
               </motion.div>
             </div>
           </div>
@@ -256,12 +268,12 @@ const LoadingScreen = ({ onFinish }) => {
           animate={exiting ? { opacity: 0, y: -14 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <div className="flex flex-nowrap items-baseline justify-center gap-x-2 whitespace-nowrap sm:gap-x-3">
-            <span className="font-serif text-2xl uppercase tracking-luxe text-cream-50 sm:text-4xl md:text-5xl">
-              Eliseo
-            </span>
-            <span className="font-script text-xl not-italic text-gold sm:text-3xl md:text-4xl">
-              Beauty Lounge
+          <div className="flex flex-col items-center gap-2">
+            <h1 className="whitespace-nowrap font-serif text-base uppercase tracking-[0.18em] text-cream-50 sm:text-2xl md:text-3xl">
+              Eliseo Beauty Lounge
+            </h1>
+            <span className="font-script text-sm italic tracking-wide text-gold sm:text-base md:text-lg">
+              Be Radiant. Be You.
             </span>
           </div>
 
